@@ -1,5 +1,9 @@
 
 export default {
+  server: {
+    host: process.env.APP_URL || 'localhost', // default: localhost
+    port: process.env.APP_PORT || 3000, // default: 3000
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -35,6 +39,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    "~/plugins/vee-validate.js",
+    { src: '~plugins/vue-awesome-notifications.js', ssr: false },
+    { src: '~/plugins/vue-good-table', ssr: false }
   ],
   /*
   ** Auto import components
@@ -50,7 +57,13 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/dotenv',
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
   ],
+  axios: {
+    baseURL: process.env.API_URL || 'http://localhost:3000'
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
