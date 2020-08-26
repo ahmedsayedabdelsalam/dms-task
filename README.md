@@ -1,8 +1,13 @@
 # dms-task
 
+A nuxt.js app to import/view users from xlsx file.
+
 ## Build Setup
 
 ```bash
+# add you env variables.
+$ cp .env.example .env
+
 # install dependencies
 $ npm install
 
